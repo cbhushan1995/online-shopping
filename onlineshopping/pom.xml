@@ -13,6 +13,14 @@
 	</properties>
 	<dependencies>
 
+
+		<!-- Link Backend Project -->
+		<dependency>
+			<groupId>net.kzn</groupId>
+			<artifactId>shoppingbackend</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
 		<!-- JAVA EE -->
 		<!-- https://mvnrepository.com/artifact/javax/javaee-api -->
 		<dependency>
@@ -42,13 +50,13 @@
 			<version>${spring.version}</version>
 		</dependency>
 
-	
-<!-- 		JSTL -->
-	<dependency>
-	<groupId>jstl</groupId>
-	<artifactId>jstl</artifactId>
-	<version>1.2</version>
-	</dependency>
+
+		<!-- JSTL -->
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
 
 	</dependencies>
 
