@@ -23,9 +23,13 @@
 <!-- Bootstrap Core CSS -->
 <link href="${css}/bootstrap.min.css" rel="stylesheet">
 
-
 <!-- Bootstrap Readable CSS -->
 <link href="${css}/bootstrap-readable-theme.css" rel="stylesheet">
+
+
+<!-- Bootstrap DATA TABLE   CSS -->
+<link href="${css}/dataTables.bootstrap.css" rel="stylesheet">
+
 
 <!-- Custom CSS -->
 <link href="${css}/myapp.css" rel="stylesheet"> 
@@ -39,6 +43,7 @@
 
 <script type="text/javascript">
 	window.menu = '${title}';
+	window.contextRoot='${contextRoot}'
 </script>
 
 </head>
@@ -75,6 +80,12 @@
 				<%@include file="listProducts.jsp"%>
 			</c:if>
 			
+			
+			<!-- 	only when user clicks show product  -->
+			<c:if test="${userClickShowProduct == true}">
+				<%@include file="SingleProduct.jsp"%>
+			</c:if>
+			
 		</div>
 
 		<!-- Footer comes here-->
@@ -87,6 +98,13 @@
 		<!-- Bootstrap Core JavaScript -->
 		<script src="${js}/bootstrap.min.js"></script>
 
+<!-- 		DATA TABLE PLUGIN -->
+		<script src="${js}/jquery.dataTables.js"></script>
+		
+<!-- 		DATA TABLE bootstrap js -->
+		<script src="${js}/dataTables.bootstrap.js"></script>
+				
+		
 		<!-- 	self coded java script -->
 		<script type="text/javascript" src="${js }/myapp.js"></script>
 	</div>

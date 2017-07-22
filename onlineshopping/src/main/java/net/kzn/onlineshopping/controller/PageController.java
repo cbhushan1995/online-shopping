@@ -1,25 +1,37 @@
 
 package net.kzn.onlineshopping.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import net.kzn.onlineshopping.exception.ProductNotFoundException;
 import net.kzn.shoppingbackend.dao.CategoryDAO;
+import net.kzn.shoppingbackend.dao.ProductDAO;
 import net.kzn.shoppingbackend.dto.Category;
+import net.kzn.shoppingbackend.dto.Product;
 
 @Controller
 public class PageController {
-	
+	private static final Logger logger=LoggerFactory.getLogger(PageController.class);
 	@Autowired
 	private CategoryDAO categoryDAO;
+	@Autowired
+	private ProductDAO productDAO;
+
 	
 	@RequestMapping(value = { "/", "/home", "/index" })
 	public ModelAndView index() {
 		ModelAndView modelAndView = new ModelAndView("page");
 		modelAndView.addObject("title", "HOME");
+		
+		logger.info("Inside pagecotroller index method -- INFO");
+		logger.debug("Inside pagecotroller index method -- DEBUG");
+		
 		
 //		passing the list of categories
 		modelAndView.addObject("categories",categoryDAO.list());
@@ -107,4 +119,29 @@ public ModelAndView showCategoryProducts(@PathVariable("id") int id) {
 	return modelAndView;
 }
 
+/*
+ * viewing the single product 
+ *
+ */
+
+@RequestMapping(value="/show/{id}/product")
+public ModelAndView showSingleProduct(@PathVariable int id)throws ProductNotFoundException
+{
+	ModelAndView mv=new ModelAndView("page");
+	Product product=productDAO.get(id);
+	
+	if(product==null) throw new ProductNotFoundException();
+	
+	//update the view count
+	product.setViews(product.getViews()+1);
+	productDAO.update(product);
+	//------------------------------------------------
+	
+	mv.addObject("Title", product.getName());
+	mv.addObject("product", product);
+	
+	mv.addObject("userClickShowProduct", true);
+	
+	return mv;
+}
 }
