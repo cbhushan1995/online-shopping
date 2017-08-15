@@ -9,7 +9,7 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="${contextRoot }/home">Onlone
+			<a class="navbar-brand" href="${contextRoot }/home">Online
 				Shopping</a>
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
@@ -25,6 +25,14 @@
 				<li id="manageProducts"><a
 					href="${contextRoot }/manage/products">Manage Products</a></li>
 			</ul>
+			
+			<ul class="nav navbar-nav navbar-right">
+			<li id="register"><a
+					href="${contextRoot }/register">Sign Up</a></li>
+					<li id="login"><a
+					href="${contextRoot }/login">Login</a></li>
+			</ul>
+			
 		</div>
 		<!-- /.navbar-collapse -->
 	</div>
