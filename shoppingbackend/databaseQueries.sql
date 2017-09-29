@@ -22,7 +22,7 @@ create table user_detail(
  last_name varchar(50),
  role varchar(50),
  enabled boolean,
- password varchar(50),
+ password varchar(60),
  email varchar(50),
  contact_number varchar(15),
  CONSTRAINT pk_user_id primary key (id)
@@ -31,15 +31,15 @@ create table user_detail(
 
 
 INSERT INTO user_detail
-(first_name,last_name,role,enabled,password,email,contact_number) values('virat','kohli','ADMIN',true,'admin','vk@gmail.com','8888888888')
+(first_name,last_name,role,enabled,password,email,contact_number) values('virat','kohli','ADMIN',true,'$2a$06$bRcrxa11geBKcSFLOc33k.AGaIOiqRwTpo4nQ5CyPaO.fYj/yTRJS','vk@gmail.com','8888888888')
 
 
 INSERT INTO user_detail
-(first_name,last_name,role,enabled,password,email,contact_number) values('Ravindra','Jadeja','SUPPLIER',true,'12345','RJ@gmail.com','9999999999')
+(first_name,last_name,role,enabled,password,email,contact_number) values('Ravindra','Jadeja','SUPPLIER',true,'$2a$06$D8FPx7ybptE3GF/Yz69mWOGdiR41iX/BtSyh51H6nGvTILashpBNm','RJ@gmail.com','9999999999')
 
 
 INSERT INTO user_detail
-(first_name,last_name,role,enabled,password,email,contact_number) values('Ravichandra','Ashwin','SUPPLIER',true,'admin','ra@gmail.com','7777777777')
+(first_name,last_name,role,enabled,password,email,contact_number) values('Ravichandra','Ashwin','SUPPLIER',true,'$2a$06$4TgTC28FfuYIWU8TLGKTaugbeyYEEroir.IZCekgPs0r1klc1YFL6','ra@gmail.com','7777777777')
 
 
 
@@ -77,3 +77,20 @@ VALUES ('PRDMNO123PQRX', ' Macbook Pro', 'apple', 'This is one of the best lapto
 
 INSERT INTO product (code, name, brand, description, unit_price, quantity, is_active, category_id, supplier_id)
 VALUES ('PRDABCXYZDEFX', 'Dell Latitude E6510', 'dell', 'This is one of the best laptop series from dell that can be used!', 48000, 5, true, 1, 3 );
+
+
+
+--------the cart line table to store the cart details
+
+CREATE TABLE cart_line(
+id IDENTITY,
+cart_id int,
+total DECIMAL(10,2),
+product_id int,
+product_count int,
+buying_	price DECIMAL(10,2);
+is_available boolean,
+CONSTRAINT fk_cartline_cart_id FOREIGN KEY(cart_id) REFERENCES cart(id),
+CONSTRAINT fk_cartline_product_id FOREIGN KEY(product_id) REFERENCES product(id),
+CONSTRAINT pk_cartline_id	PRIMARY KEY(id)
+); 

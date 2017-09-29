@@ -133,7 +133,8 @@
 			<hr>
 		</div>
 		<div class="col-xs-12">
-			<div style="overflow: auto;">
+			<div class="container-fuid">
+			<div class="table-responsive">
 				<!-- Product  table for Admin -->
 				<table id="adminProductsTable"
 					class="table table-striped table-bordered">
@@ -167,7 +168,10 @@
 					</tfoot>
 
 				</table>
+			
 			</div>
+			</div>
+						
 		</div>
 	</div>
 

@@ -12,7 +12,7 @@
    http://www.springframework.org/schema/webflow-config
    http://www.springframework.org/schema/webflow-config/spring-webflow-config.xsd">
 	<context:component-scan base-package="net.kzn.onlineshopping"></context:component-scan>
-	<context:component-scan base-package="net.kzn.shoppingbackend"></context:component-scan>
+	
 	<!-- <context:component-scan base-package="net.kzn.shoppingbackend.config"></context:component-scan> -->
 
 	<bean id="viewResolver"
